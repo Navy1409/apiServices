@@ -67,13 +67,21 @@ class _FormScreenState extends State<FormScreen> {
     return null;
   }
 
-  // Submit the form
+  // Submit the form and reset fields
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       // If form is valid, show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Form Submitted Successfully!')),
       );
+
+      // Reset all fields after submission
+      _nameController.clear();
+      _emailController.clear();
+      _phoneController.clear();
+      _countryController.clear();
+      _stateController.clear();
+      _cityController.clear();
     } else {
       // If form is invalid, show error message
       ScaffoldMessenger.of(context).showSnackBar(
