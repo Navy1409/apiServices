@@ -58,7 +58,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/16bardubbrk-75838.mp3
+    - assets/
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true

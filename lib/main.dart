@@ -1,11 +1,9 @@
-// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/post_bloc.dart';
 import 'bloc/post_event.dart';
 import 'bloc/post_state.dart';
-import 'models/post_model.dart';
-import 'screen/audio_player_screen.dart';  // Import the audio player screen
+import 'screen/audio_player_screen.dart';
 import 'screen/form_screen.dart';
 import 'screen/post_detail_screen.dart';
 import 'services/api_service.dart';
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Internship Assignment',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -36,12 +34,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;  // To keep track of the current page
-
-  // List of screens to be displayed based on selection
+  int _selectedIndex = 0;
   final List<Widget> _screens = [
-    PostsScreen(),        // For posts
-    AudioPlayerScreen(),  // For audio player
+    PostsScreen(),
+    AudioPlayerScreen(),
   ];
 
   // Method to change selected index
@@ -55,7 +51,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Posts')),
-      body: _screens[_selectedIndex],  // Display screen based on selected index
+      body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
@@ -84,7 +80,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// Posts Screen (to display posts)
 class PostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
