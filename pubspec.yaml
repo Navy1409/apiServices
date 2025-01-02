@@ -58,7 +58,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/
+    - assets/16bardubbrk-75838.mp3
+    - assets/Yiruma_-_River_Flows_in_You_(Hydr0.org).mp3
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true

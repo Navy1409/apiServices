@@ -6,33 +6,63 @@ class AudioPlayerScreen extends StatefulWidget {
   _AudioPlayerScreenState createState() => _AudioPlayerScreenState();
 }
 
-class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
-  AudioPlayer _audioPlayer = AudioPlayer();
+class _AudioPlayerScreenState extends State<AudioPlayerScreen>
+    with SingleTickerProviderStateMixin {
+  final _audioPlayer = AudioPlayer();
   bool _isPlaying = false;
   Duration _position = Duration.zero;
+  Duration _duration = Duration.zero;
+
+  late AnimationController _rotationController;
 
   @override
   void initState() {
     super.initState();
+
+    // Initialize animation controller for rotation
+    _rotationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 10), // Adjust for rotation speed
+    );
+
+    // Listeners for audio duration and position
+    _audioPlayer.onDurationChanged.listen((newDuration) {
+      setState(() {
+        _duration = newDuration;
+      });
+    });
     _audioPlayer.onPositionChanged.listen((position) {
       setState(() {
         _position = position;
+      });
+    });
+
+    // Listener for when audio completes
+    _audioPlayer.onPlayerComplete.listen((event) {
+      setState(() {
+        // Reset position and stop rotation when audio finishes
+        _position = Duration.zero;
+        _rotationController.stop();
+        _rotationController.reset();
+        _isPlaying = false;
       });
     });
   }
 
   @override
   void dispose() {
+    _rotationController.dispose();
     _audioPlayer.dispose();
     super.dispose();
   }
 
-  // Play or pause the audio
   void _toggleAudio() async {
     if (_isPlaying) {
       await _audioPlayer.pause();
+      _rotationController.stop(); // Stop rotation when paused
     } else {
-      await _audioPlayer.play(AssetSource('audio/audio.mp3'));
+      await _audioPlayer.play(AssetSource("Yiruma_-_River_Flows_in_You_(Hydr0.org).mp3"));
+      _rotationController.repeat(); // Start rotation when playing
     }
     setState(() {
       _isPlaying = !_isPlaying;
@@ -46,23 +76,74 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(
-              icon: Icon(
-                _isPlaying ? Icons.pause : Icons.play_arrow,
-                size: 64,
-              ),
-              onPressed: _toggleAudio,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                RotationTransition(
+                  turns: _rotationController,
+                  child: CircleAvatar(
+                    radius: 80,
+                    backgroundImage: NetworkImage(
+                      "https://c.saavncdn.com/572/River-Flows-in-You-English-2015-20180429015213-500x500.jpg",
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Text("River Flows in You", style: TextStyle(fontSize: 20)),
+                SizedBox(height: 5),
+                Text("Yuki", style: TextStyle(fontSize: 16, color: Colors.grey)),
+              ],
             ),
-            SizedBox(height: 16),
-            Text(
-              "Position: ${_position.inSeconds}s",
-              style: TextStyle(fontSize: 20),
-            ),
+            Column(
+              children: [
+                Slider(
+                  min: 0,
+                  max: _duration.inSeconds.toDouble(),
+                  value: _position.inSeconds.toDouble(),
+                  onChanged: (value) async {
+                    final newPosition = Duration(seconds: value.toInt());
+                    await _audioPlayer.seek(newPosition);
+                    setState(() {
+                      _position = newPosition;
+                    });
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(formatTime(_position)),
+                      Text(formatTime(_duration)),
+                    ],
+                  ),
+                ),
+                IconButton(
+                  icon: Icon(
+                    _isPlaying ? Icons.pause : Icons.play_arrow,
+                    size: 64,
+                  ),
+                  onPressed: _toggleAudio,
+                ),
+              ],
+            )
           ],
         ),
       ),
     );
+  }
+
+  String formatTime(Duration duration) {
+    final hours = duration.inHours;
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+    return [
+      if (hours > 0) hours,
+      minutes,
+      seconds,
+    ].map((unit) => unit.toString().padLeft(2, '0')).join(":");
   }
 }
