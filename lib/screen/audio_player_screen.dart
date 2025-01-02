@@ -106,7 +106,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                   inactiveColor: Colors.grey,
                   min: 0,
                   max: _duration.inSeconds.toDouble(),
-                  value: _position.inSeconds.toDouble(),
+                  value: _position.inSeconds.toDouble().clamp(0.0, _duration.inSeconds.toDouble()),
                   onChanged: (value) async {
                     final newPosition = Duration(seconds: value.toInt());
                     await _audioPlayer.seek(newPosition);
