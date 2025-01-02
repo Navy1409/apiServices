@@ -85,7 +85,11 @@ class _FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Form with Validation')),
+      appBar: AppBar(
+        title: Text('Form with Validation', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        backgroundColor: Color(0xff0e0af2),  // AppBar color matching the theme
+        iconTheme: IconThemeData(color: Colors.white),  // Back button color white
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -95,7 +99,11 @@ class _FormScreenState extends State<FormScreen> {
               // Name Field
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: InputDecoration(
+                  labelText: 'Name',
+                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  border: OutlineInputBorder(),
+                ),
                 validator: _validateName,
               ),
               SizedBox(height: 16),
@@ -103,7 +111,11 @@ class _FormScreenState extends State<FormScreen> {
               // Email Field
               TextFormField(
                 controller: _emailController,
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: InputDecoration(
+                  labelText: 'Email',
+                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  border: OutlineInputBorder(),
+                ),
                 validator: _validateEmail,
               ),
               SizedBox(height: 16),
@@ -111,7 +123,11 @@ class _FormScreenState extends State<FormScreen> {
               // Phone Field
               TextFormField(
                 controller: _phoneController,
-                decoration: InputDecoration(labelText: 'Phone'),
+                decoration: InputDecoration(
+                  labelText: 'Phone',
+                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  border: OutlineInputBorder(),
+                ),
                 keyboardType: TextInputType.phone,
                 validator: _validatePhone,
               ),
@@ -120,7 +136,11 @@ class _FormScreenState extends State<FormScreen> {
               // Country Field
               TextFormField(
                 controller: _countryController,
-                decoration: InputDecoration(labelText: 'Country'),
+                decoration: InputDecoration(
+                  labelText: 'Country',
+                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  border: OutlineInputBorder(),
+                ),
                 validator: _validateCountry,
               ),
               SizedBox(height: 16),
@@ -128,7 +148,11 @@ class _FormScreenState extends State<FormScreen> {
               // State Field
               TextFormField(
                 controller: _stateController,
-                decoration: InputDecoration(labelText: 'State'),
+                decoration: InputDecoration(
+                  labelText: 'State',
+                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  border: OutlineInputBorder(),
+                ),
                 validator: _validateState,
               ),
               SizedBox(height: 16),
@@ -136,7 +160,11 @@ class _FormScreenState extends State<FormScreen> {
               // City Field
               TextFormField(
                 controller: _cityController,
-                decoration: InputDecoration(labelText: 'City'),
+                decoration: InputDecoration(
+                  labelText: 'City',
+                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  border: OutlineInputBorder(),
+                ),
                 validator: _validateCity,
               ),
               SizedBox(height: 16),
@@ -144,7 +172,11 @@ class _FormScreenState extends State<FormScreen> {
               // Submit Button
               ElevatedButton(
                 onPressed: _submitForm,
-                child: Text('Submit'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff0e0af2),  // Match button color with theme
+                  padding: EdgeInsets.symmetric(vertical: 12),
+                ),
+                child: Text('Submit', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),

@@ -72,7 +72,9 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Audio Player")),
+      backgroundColor: Color(0xFFffe6fe),
+      appBar: AppBar(title: Text("Audio Player", style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+      backgroundColor: Color(0xff0e0af2),),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -92,14 +94,16 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Text("River Flows in You", style: TextStyle(fontSize: 20)),
+                Text("River Flows in You", style: TextStyle(fontSize: 20, color: Color(0xff0e0af2))),
                 SizedBox(height: 5),
-                Text("Yuki", style: TextStyle(fontSize: 16, color: Colors.grey)),
+                Text("Yuki", style: TextStyle(fontSize: 16, color: Color(0xff715eff))),
               ],
             ),
             Column(
               children: [
                 Slider(
+                  activeColor: Color(0xff0e0af2),
+                  inactiveColor: Colors.grey,
                   min: 0,
                   max: _duration.inSeconds.toDouble(),
                   value: _position.inSeconds.toDouble(),
@@ -116,8 +120,8 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(formatTime(_position)),
-                      Text(formatTime(_duration)),
+                      Text(formatTime(_position), style: TextStyle(color: Color(0xff0e0af2)),),
+                      Text(formatTime(_duration), style: TextStyle(color: Color(0xff0e0af2)),),
                     ],
                   ),
                 ),
@@ -127,6 +131,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                     size: 64,
                   ),
                   onPressed: _toggleAudio,
+                  color: Color(0xff0e0af2),
                 ),
               ],
             )
