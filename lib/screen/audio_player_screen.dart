@@ -72,9 +72,9 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFffe6fe),
+      backgroundColor: Color.fromRGBO(3, 51, 84, 1),
       appBar: AppBar(title: Text("Audio Player", style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
-      backgroundColor: Color(0xff0e0af2),),
+      backgroundColor: Color(0xff0e1324),),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -87,6 +87,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                 RotationTransition(
                   turns: _rotationController,
                   child: CircleAvatar(
+                    backgroundColor: Colors.white,
                     radius: 80,
                     backgroundImage: NetworkImage(
                       "https://c.saavncdn.com/572/River-Flows-in-You-English-2015-20180429015213-500x500.jpg",
@@ -94,15 +95,15 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Text("River Flows in You", style: TextStyle(fontSize: 20, color: Color(0xff0e0af2))),
+                Text("River Flows in You", style: TextStyle(fontSize: 20, color:Color.fromRGBO(245, 144, 29,0.9))),
                 SizedBox(height: 5),
-                Text("Yuki", style: TextStyle(fontSize: 16, color: Color(0xff715eff))),
+                Text("Yuki", style: TextStyle(fontSize: 16, color:Color.fromRGBO(252, 244, 235,0.9))),
               ],
             ),
             Column(
               children: [
                 Slider(
-                  activeColor: Color(0xff0e0af2),
+                  activeColor: Color.fromRGBO(245, 144, 29,1),
                   inactiveColor: Colors.grey,
                   min: 0,
                   max: _duration.inSeconds.toDouble(),
@@ -120,8 +121,8 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(formatTime(_position), style: TextStyle(color: Color(0xff0e0af2)),),
-                      Text(formatTime(_duration), style: TextStyle(color: Color(0xff0e0af2)),),
+                      Text(formatTime(_position), style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),),
+                      Text(formatTime(_duration), style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),),
                     ],
                   ),
                 ),
@@ -131,7 +132,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen>
                     size: 64,
                   ),
                   onPressed: _toggleAudio,
-                  color: Color(0xff0e0af2),
+                  color:Color.fromRGBO(252, 244, 235,0.9),
                 ),
               ],
             )

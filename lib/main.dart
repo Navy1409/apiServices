@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             label: 'Form Screen',
           ),
         ],
-        backgroundColor:Color(0xff0e0af2) ,
+        backgroundColor:Color(0xff0e1324) ,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white,
       ),
@@ -84,8 +84,8 @@ class PostsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("POSTS", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-      backgroundColor: Color(0xff0e0af2),),
-      backgroundColor: Color(0xff0e0af2),
+      backgroundColor: Color(0xff0e1324),),
+      backgroundColor: Color(0xff0e1324),
       body:  BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {
           if (state is PostLoading) {
@@ -96,22 +96,24 @@ class PostsScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final post = state.posts[index];
                 return Card(
-                  color: index%2==0? Color(0xFFffe6fe): Color(0xfffffef0),
+                    color: Color.fromRGBO(3, 51, 84, 0.7),
+                  
                   margin: EdgeInsets.all(8.0),
                   child: Container(
                     height: 140,
                     child: ListTile(
-                      title: Text(post.title,maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20, color: Color(0xff0e0af2))),
+                      title: Text(post.title,maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20, color: Color.fromRGBO(245, 144, 29,0.9))),
                       subtitle: Container(
                         decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),
-                          color: index%2==1? Color(0xFFffe6fe): Color(0xfffffef0)
+                          // color: Color.fromRGBO(255, 255, 255, 0.8),
                         ),
-                        margin: EdgeInsets.only(top: 25),
+                        margin: EdgeInsets.only(top: 15, bottom: 0),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                           child: Text(post.body, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(
                             fontSize: 16,
-                            color: Color(0xff0e0af2)
+                            color:  Color.fromRGBO(252, 244, 235,0.9),
+                            fontWeight: FontWeight.bold
                           ),),
                         ),
                       ),

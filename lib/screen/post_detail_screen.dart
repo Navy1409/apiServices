@@ -10,20 +10,20 @@ class PostDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff0e0af2),
+      backgroundColor: Color(0xff0e1324),
       appBar: AppBar(
         title: Text(
           'Post Details',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        backgroundColor: Color(0xff0e0af2),
+        backgroundColor: Color(0xff0e1324),
         iconTheme: IconThemeData(
           color: Colors.white, // Set the color of the back button to white
         ),
       ),
 
       body: Container(
-        decoration: BoxDecoration(color: post.id%2==1? Color(0xFFffe6fe): Color(0xfffffef0),
+        decoration: BoxDecoration(color:  Color.fromRGBO(3, 51, 84, 0.7),
           borderRadius: BorderRadiusDirectional.horizontal(start: Radius.circular(20), end: Radius.circular(20))
         ),
         margin: EdgeInsets.only(top: 30),
@@ -37,7 +37,7 @@ class PostDetailScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xff0e0af2)
+                  color: Color.fromRGBO(245, 144, 29,0.9)
                 ),
               ),
               SizedBox(height: 16),
@@ -45,13 +45,13 @@ class PostDetailScreen extends StatelessWidget {
                 post.body,
                 style: TextStyle(
                   fontSize: 18,
-                  color: Color(0xff715eff),
+                  color: Color.fromRGBO(252, 244, 235,0.9),
                 ),
               ),
               SizedBox(height: 16),
               Text(
                 'Post ID: ${post.id}',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color: Color(0xff715eff)),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600,color:Color.fromRGBO(252, 244, 235,0.9)),
               ),
             ],
           ),

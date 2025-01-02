@@ -93,9 +93,10 @@ class _FormScreenState extends State<FormScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(3, 51, 84, 1),
       appBar: AppBar(
         title: Text('Form with Validation', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-        backgroundColor: Color(0xff0e0af2),  // AppBar color matching the theme
+        backgroundColor: Color(0xff0e1324),  // AppBar color matching the theme
         iconTheme: IconThemeData(color: Colors.white),  // Back button color white
       ),
       body: Padding(
@@ -109,9 +110,17 @@ class _FormScreenState extends State<FormScreen> {
                 controller: _nameController,
                 decoration: InputDecoration(
                   labelText: 'Name',
-                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  labelStyle: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),  // Match label color
                   border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(245, 144, 29,0.9), width: 2.0), // Focused border color
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(252, 244, 235,0.9), width: 1.0), // Unfocused border color
+                  ),
                 ),
+                style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),
+                cursorColor:Color.fromRGBO(252, 244, 235,0.9) ,
                 validator: _validateName,
               ),
               SizedBox(height: 16),
@@ -121,9 +130,17 @@ class _FormScreenState extends State<FormScreen> {
                 controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
-                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  labelStyle: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),  // Match label color
                   border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(245, 144, 29,0.9), width: 2.0), // Focused border color
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(252, 244, 235,0.9), width: 1.0), // Unfocused border color
+                  ),
                 ),
+                style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),
+                cursorColor:Color.fromRGBO(252, 244, 235,0.9) ,
                 validator: _validateEmail,
               ),
               SizedBox(height: 16),
@@ -133,9 +150,17 @@ class _FormScreenState extends State<FormScreen> {
                 controller: _phoneController,
                 decoration: InputDecoration(
                   labelText: 'Phone',
-                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  labelStyle: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),  // Match label color
                   border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(245, 144, 29,0.9), width: 2.0), // Focused border color
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(252, 244, 235,0.9), width: 1.0), // Unfocused border color
+                  ),
                 ),
+                style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),
+                cursorColor:Color.fromRGBO(252, 244, 235,0.9) ,
                 keyboardType: TextInputType.phone,
                 validator: _validatePhone,
               ),
@@ -146,10 +171,18 @@ class _FormScreenState extends State<FormScreen> {
                 controller: _countryController,
                 decoration: InputDecoration(
                   labelText: 'Country',
-                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  labelStyle: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),  // Match label color
                   border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(245, 144, 29,0.9), width: 2.0), // Focused border color
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(252, 244, 235,0.9), width: 1.0), // Unfocused border color
+                  ),
                 ),
+                style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),
                 validator: _validateCountry,
+                cursorColor:Color.fromRGBO(252, 244, 235,0.9) ,
               ),
               SizedBox(height: 16),
 
@@ -158,10 +191,18 @@ class _FormScreenState extends State<FormScreen> {
                 controller: _stateController,
                 decoration: InputDecoration(
                   labelText: 'State',
-                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  labelStyle: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),  // Match label color
                   border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(245, 144, 29,0.9), width: 2.0), // Focused border color
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(252, 244, 235,0.9), width: 1.0), // Unfocused border color
+                  ),
                 ),
+                style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),
                 validator: _validateState,
+                cursorColor:Color.fromRGBO(252, 244, 235,0.9) ,
               ),
               SizedBox(height: 16),
 
@@ -170,9 +211,17 @@ class _FormScreenState extends State<FormScreen> {
                 controller: _cityController,
                 decoration: InputDecoration(
                   labelText: 'City',
-                  labelStyle: TextStyle(color: Color(0xff0e0af2)),  // Match label color
+                  labelStyle: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),  // Match label color
                   border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(245, 144, 29,0.9), width: 2.0), // Focused border color
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color.fromRGBO(252, 244, 235,0.9), width: 1.0), // Unfocused border color
+                  ),
                 ),
+                style: TextStyle(color: Color.fromRGBO(252, 244, 235,0.9)),
+                cursorColor:Color.fromRGBO(252, 244, 235,0.9) ,
                 validator: _validateCity,
               ),
               SizedBox(height: 16),
@@ -181,10 +230,10 @@ class _FormScreenState extends State<FormScreen> {
               ElevatedButton(
                 onPressed: _submitForm,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xff0e0af2),  // Match button color with theme
+                  backgroundColor: Color(0xff0e1324),  // Match button color with theme
                   padding: EdgeInsets.symmetric(vertical: 12),
                 ),
-                child: Text('Submit', style: TextStyle(color: Colors.white)),
+                child: Text('Submit', style: TextStyle(color: Color.fromRGBO(245, 144, 29,0.9))),
               ),
             ],
           ),
